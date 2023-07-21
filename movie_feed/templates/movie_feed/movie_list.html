@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<div class="row">
+{% for movie in movies %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src={{movie.image}}>
+            <div class="card-body">
+                <h5 class="card-title">{{ movie.title }}</h5>
+                <p class="card-text">{{ movie.release_year }}</p>
+                <a href="{% url 'movie_detail' movie.pk %}"
+                   class="btn btn-primary">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
