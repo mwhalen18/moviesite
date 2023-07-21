@@ -2,21 +2,29 @@
 {% load static %}
 {% block page_content %}
 
+<div class="column-is-one-third">
+    <h2>Search for a movie</h2>
+    {{ form.as_p }}
+</div>
+
 <div class="row">
 {% for movie in movies %}
-    <div class="col-md-4">
-        <div class="card mb-2">
+    <div class="col-sm-3">
+        <div class="card">
             <img class="card-img-top" src={{movie.image}}>
             <div class="card-body">
-                <h5 class="card-title">{{ movie.title }}</h5>
+                <h6 class="card-title">{{ movie.title }}</h5>
                 <p class="card-text">{{ movie.release_year }}</p>
                 <a href="{% url 'movie_detail' movie.pk %}"
                    class="btn btn-primary">
-                    Read More
+                    Details
                 </a>
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
+
+
+
 {% endblock %}

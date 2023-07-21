@@ -10,8 +10,12 @@ from .models import Movie
 
 def movie_list(request):
     movies = Movie.objects.all()
+
+    form = MovieForm()
+
     context = {
-        'movies': movies
+        'movies': movies,
+        'form': form
     }
 
     return render(request, 'movie_feed/movie_list.html', context)
