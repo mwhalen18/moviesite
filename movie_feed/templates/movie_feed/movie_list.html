@@ -3,12 +3,15 @@
 {% block page_content %}
 
 <div class="column-is-one-third">
-    <h2>Search for a movie</h2>
-    {{ form.as_p }}
+    <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+        
+    </form>
 </div>
 
 <div class="row">
-{% for movie in movies %}
+{% for movie in filter.qs %}
     <div class="col-sm-3">
         <div class="card">
             <img class="card-img-top" src={{movie.image}}>

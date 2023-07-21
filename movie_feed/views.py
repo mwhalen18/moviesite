@@ -4,18 +4,15 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView
 
-from .forms import MovieForm
+from .filters import MovieFilter
 
 from .models import Movie
 
 def movie_list(request):
-    movies = Movie.objects.all()
-
-    form = MovieForm()
+    f = MovieFilter(request.GET, queryset=Movie.objects.all())
 
     context = {
-        'movies': movies,
-        'form': form
+        'filter': f
     }
 
     return render(request, 'movie_feed/movie_list.html', context)
