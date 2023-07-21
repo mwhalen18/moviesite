@@ -2,32 +2,40 @@
 {% load static %}
 {% block page_content %}
 
-<div class="column-is-one-third">
-    <form method="get">
-        {{ filter.form.as_p }}
+<div class="container">
+    <div class="row" style="padding: 50px;">
+      <form method="get">
+        {{ filtered_qs_form.form.as_p }}
         <input type="submit" />
-        
-    </form>
-</div>
-
-<div class="row">
-{% for movie in filter.qs %}
-    <div class="col-sm-3">
-        <div class="card">
-            <img class="card-img-top" src={{movie.image}}>
-            <div class="card-body">
-                <h6 class="card-title">{{ movie.title }}</h5>
-                <p class="card-text">{{ movie.release_year }}</p>
-                <a href="{% url 'movie_detail' movie.pk %}"
-                   class="btn btn-primary">
-                    Details
-                </a>
-            </div>
-        </div>
+      </form>
     </div>
-    {% endfor %}
+    <div class="row">
+        {% for movie in filter %}
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src={{movie.image}}>
+                    <div class="card-body">
+                        <h6 class="card-title">{{ movie.title }}</h5>
+                        <p class="card-text">{{ movie.release_year }}</p>
+                        <a href="{% url 'movie_detail' movie.pk %}"
+                           class="btn btn-primary">
+                            Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 
-
-
+<div >
+    <span class="step-links">
+    {% if filter.has_previous %}
+    <a href="?page={{ filter.previous_page_number }}"><span style="font-size:30px;float:left;" class="glyphicon glyphicon-arrow-left"> previous</span></a>
+    {% endif %}
+    {% if filter.has_next %}
+    <a href="?page={{ filter.next_page_number }}"> <span style="font-size:30px;float:right;" class="glyphicon glyphicon-arrow-right">next </span></a>
+    {% endif %}
+    </span>
+   </div>
 {% endblock %}

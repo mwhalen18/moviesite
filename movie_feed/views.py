@@ -3,16 +3,29 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .filters import MovieFilter
 
 from .models import Movie
 
 def movie_list(request):
-    f = MovieFilter(request.GET, queryset=Movie.objects.all())
+    f = MovieFilter(request.GET, queryset=Movie.objects.all())    
+    paginator = Paginator(f.qs, 25)
+
+    page = request.GET.get('page')
+
+    try:
+        response = paginator.page(page)
+    except PageNotAnInteger:
+        response = paginator.page(1)
+    except EmptyPage:
+        response = paginator.page(paginator.num_pages)
+
 
     context = {
-        'filter': f
+        'filter': response,
+        'filtered_qs_form': f
     }
 
     return render(request, 'movie_feed/movie_list.html', context)

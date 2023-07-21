@@ -4,7 +4,7 @@ from django import forms
 from .models import Movie
 
 class MovieFilter(django_filters.FilterSet):
-    title = django_filters.CharFilter(lookup_expr='iexact', widget = forms.widgets.TextInput(
+    title = django_filters.CharFilter(lookup_expr='contains', widget = forms.widgets.TextInput(
         attrs={
             'placeholder': 'Find a movie'
         }
