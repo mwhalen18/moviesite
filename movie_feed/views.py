@@ -10,7 +10,7 @@ from .filters import MovieFilter
 from .models import Movie
 
 def movie_list(request):
-    f = MovieFilter(request.GET, queryset=Movie.objects.all())    
+    f = MovieFilter(request.GET, queryset=Movie.objects.all().order_by('title'))    
     paginator = Paginator(f.qs, 25)
 
     page = request.GET.get('page')
