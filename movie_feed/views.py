@@ -11,7 +11,7 @@ from .models import Movie
 
 def movie_list(request):
     f = MovieFilter(request.GET, queryset=Movie.objects.all().order_by('title'))    
-    paginator = Paginator(f.qs, 25)
+    paginator = Paginator(f.qs, 28)
 
     page = request.GET.get('page')
 

@@ -2,6 +2,8 @@
 {% load static %}
 {% block page_content %}
 
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+
 <div class="container">
     <div class="row" style="padding: 50px;">
       <form method="get">
@@ -9,14 +11,15 @@
         <input type="submit" />
       </form>
     </div>
+    <a href="{% url 'movie_list' %}" class="btn btn-primary">Home</a>
     <div class="row">
         {% for movie in filter %}
             <div class="col-sm-3">
                 <div class="card">
-                    <img class="card-img-top" src={{movie.image}}>
+                    <img class="card-img-top" src={{movie.poster_path}}>
                     <div class="card-body">
-                        <h6 class="card-title">{{ movie.title }}</h5>
-                        <p class="card-text">{{ movie.release_year }}</p>
+                        <h6 class="card-title text-truncate">{{ movie.title }}</h5>
+                        <p class="card-text text-muted ">{{ movie.release_year }}</p>
                         <a href="{% url 'movie_detail' movie.pk %}"
                            class="btn btn-primary">
                             Details
