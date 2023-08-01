@@ -5,6 +5,8 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from django.template import loader
+
 from .filters import MovieFilter
 
 from .models import Movie
@@ -37,3 +39,6 @@ def movie_detail(request, pk):
     }
 
     return render(request, 'movie_feed/movie_detail.html', context)
+
+def main(request):
+    return render(request, 'movie_feed/main.html')
