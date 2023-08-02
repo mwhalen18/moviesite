@@ -13,7 +13,7 @@ from .models import Movie
 
 def movie_list(request):
     f = MovieFilter(request.GET, queryset=Movie.objects.all().order_by('title'))    
-    paginator = Paginator(f.qs, 28)
+    paginator = Paginator(f.qs, 30)
 
     page = request.GET.get('page')
 
@@ -39,6 +39,3 @@ def movie_detail(request, pk):
     }
 
     return render(request, 'movie_feed/movie_detail.html', context)
-
-def main(request):
-    return render(request, 'movie_feed/main.html')
