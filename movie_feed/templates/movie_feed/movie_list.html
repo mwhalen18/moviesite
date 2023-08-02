@@ -34,10 +34,10 @@
         {% for movie in filter %}
             <div class="col-2">
                 <div class="card mx-auto" style="overflow: hidden;">
-                    <img class="card-img-top" src={{movie.poster_path}} alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title text-truncate">{{ movie.title }}</h5>
-                        <p class="card-text text-muted ">{{ movie.release_year }}</p>
+                    <img class="card-img" src={{movie.poster_path}} alt="...">
+                    <div class="card-img-overlay">
+                        <!-- <h6 class="card-title text-truncate">{{ movie.title }}</h5> -->
+                        <!-- <p class="card-text text-muted ">{{ movie.release_year }}</p> -->
                         <a href="{% url 'movie_detail' movie.pk %}"
                            class="stretched-link">
                         </a>
