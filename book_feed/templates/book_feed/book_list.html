@@ -1,6 +1,50 @@
 {% extends "base.html" %}
 {% block page_content %}
-<h1 style="color: #E6FAFC;">You have made it to the book list</h1>
+
 <br>
-<p style="color: #E6FAFC">Check back later to see the collection</p>
+<div class="container">
+    <form method="get" style="display: inline;">
+        {{ filtered_qs_form.form.as_p }}
+    </form>
+    <div >
+        <span class="step-links">
+        {% if filter.has_previous %}
+        <a href="?page={{ filter.previous_page_number }}">
+            <span style="font-size:30px;float:left;padding-left:50px;color: #6D72C3;" class="glyphicon glyphicon-arrow-left"> 
+                previous
+            </span>
+        </a>
+        {% endif %}
+        {% if filter.has_next %}
+        <a href="?page={{ filter.next_page_number }}"> 
+            <span style="font-size:30px;float:right;padding-right:50px;color: #6D72C3;" class="glyphicon glyphicon-arrow-right">
+                next 
+            </span>
+        </a>
+        {% endif %}
+        </span>
+    </div>
+    <br>
+    <br>
+
+    <table class="article-table">
+        <thead class="article-table__headers">
+            <th></th>
+            <th></th>
+        </thead>
+        {% for book in filter %}
+        <tr class="article-table__rows">
+            <td>
+                <img class="col-sm-6" src="{{book.cover_path}}" alt="..."/>
+            </td>
+            <td>
+                <h7 style="color: #E6FAFC;">{{book.title}}</h5>
+                <p style="color: #827081;font-size: smaller;">&emsp;&emsp;By: {{book.authors}}</p>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
 {% endblock %}
