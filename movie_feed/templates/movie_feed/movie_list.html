@@ -14,14 +14,14 @@
         <span class="step-links">
         {% if filter.has_previous %}
         <a href="?page={{ filter.previous_page_number }}">
-            <span style="font-size:30px;float:left;padding-left:50px;" class="glyphicon glyphicon-arrow-left"> 
+            <span style="font-size:30px;float:left;padding-left:50px;color: #6D72C3;" class="glyphicon glyphicon-arrow-left"> 
                 previous
             </span>
         </a>
         {% endif %}
         {% if filter.has_next %}
         <a href="?page={{ filter.next_page_number }}"> 
-            <span style="font-size:30px;float:right;padding-right:50px;" class="glyphicon glyphicon-arrow-right">
+            <span style="font-size:30px;float:right;padding-right:50px;color: #6D72C3;" class="glyphicon glyphicon-arrow-right">
                 next 
             </span>
         </a>
@@ -30,7 +30,7 @@
     </div>
     <br>
     <br>
-    <div class="row gy-3">
+    <div class="row gy-3" style="min-width: 90%;"">
         {% for movie in filter %}
             <div class="col-2">
                 <div class="card mx-auto" style="overflow: hidden;">
@@ -46,24 +46,26 @@
             </div>
         {% endfor %}
     </div>
-</div>
+    <br>
 
-<div >
     <span class="step-links">
-    {% if filter.has_previous %}
-    <a href="?page={{ filter.previous_page_number }}">
-        <span style="font-size:30px;float:left;padding-left:50px;" class="glyphicon glyphicon-arrow-left"> 
-            previous
-        </span>
-    </a>
-    {% endif %}
-    {% if filter.has_next %}
-    <a href="?page={{ filter.next_page_number }}"> 
-        <span style="font-size:30px;float:right;padding-right:50px;" class="glyphicon glyphicon-arrow-right">
-            next 
-        </span>
-    </a>
-    {% endif %}
+        {% if filter.has_previous %}
+        <a href="?page={{ filter.previous_page_number }}">
+            <span style="font-size:30px;float:left;padding-left:50px;color: #6D72C3;" class="glyphicon glyphicon-arrow-left"> 
+                previous
+            </span>
+        </a>
+        {% endif %}
+        {% if filter.has_next %}
+        <a href="?page={{ filter.next_page_number }}"> 
+            <span style="font-size:30px;float:right;padding-right:50px;color: #6D72C3;" class="glyphicon glyphicon-arrow-right">
+                next 
+            </span>
+        </a>
+        {% endif %}
     </span>
+    <br>
+    <br>
+
 </div>
 {% endblock %}
