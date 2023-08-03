@@ -52,7 +52,7 @@ class Command(BaseCommand):
                 self.stdout.write(
                     self.style.WARNING(f"Unable to find data for {movie_in.Name} ({movie_in.Year})")
                 )
-                pass
+                continue
             else:
                 response = response[0]
                 base_path = 'https://image.tmdb.org/t/p/original'
