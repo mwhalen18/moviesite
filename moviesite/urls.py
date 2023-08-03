@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main, name='HOME'),
     path("movie_feed/", include("movie_feed.urls")),
+    path("book_feed/", include("book_feed.urls"))
 ]
