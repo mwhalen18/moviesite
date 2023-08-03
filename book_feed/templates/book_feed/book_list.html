@@ -35,11 +35,15 @@
         {% for book in filter %}
         <tr class="article-table__rows">
             <td>
-                <img class="col-sm-6" src="{{book.cover_path}}" alt="..."/>
+                <a href="{% url 'book_detail' book.pk%}" class="stretched-link">
+                    <img class="col-sm-6" src="{{book.cover_path}}" alt="..."/>
+                </a>
             </td>
             <td>
-                <h7 style="color: #E6FAFC;">{{book.title}}</h5>
-                <p style="color: #827081;font-size: smaller;">&emsp;&emsp;By: {{book.authors}}</p>
+                <a href="{% url 'book_detail' book.pk%}" class="stretched-link">
+                    <h7 style="color: #E6FAFC;">{{book.title}}</h5>
+                    <p style="color: #827081;font-size: smaller;">&emsp;&emsp;By: {{book.authors}}</p>
+                </a>
             </td>
         </tr>
         {% endfor %}

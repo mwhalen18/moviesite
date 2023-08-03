@@ -28,3 +28,11 @@ def book_list(request):
     }
 
     return render(request, 'book_feed/book_list.html', context)
+
+def book_detail(request, pk):
+    book = Book.objects.get(pk=pk)
+    context = {
+        'book': book
+    }
+
+    return render(request, 'book_feed/book_detail.html', context)
