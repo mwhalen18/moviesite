@@ -26,6 +26,7 @@
     </div>
     <br>
     <br>
+    <br>
 
     <table class="article-table">
         <thead class="article-table__headers">
@@ -34,21 +35,43 @@
         </thead>
         {% for book in filter %}
         <tr class="article-table__rows">
-            <td>
+            <td style="padding-bottom: 15px;width: 250px;">
                 <a href="{% url 'book_detail' book.pk%}" class="stretched-link">
                     <img class="col-sm-6" src="{{book.cover_path}}" alt="..."/>
                 </a>
             </td>
-            <td>
+            <td style="padding-bottom: 15px;"">
                 <a href="{% url 'book_detail' book.pk%}" class="stretched-link">
-                    <h7 style="color: #E6FAFC;">{{book.title}}</h5>
+                    <h6 style="color: #E6FAFC;">{{book.title}}</h5>
                     <p style="color: #827081;font-size: smaller;">&emsp;&emsp;By: {{book.authors}}</p>
                 </a>
             </td>
         </tr>
         {% endfor %}
     </table>
+    <br>
+    <div >
+        <span class="step-links">
+        {% if filter.has_previous %}
+        <a href="?page={{ filter.previous_page_number }}">
+            <span style="font-size:30px;float:left;padding-left:50px;color: #6D72C3;" class="glyphicon glyphicon-arrow-left"> 
+                previous
+            </span>
+        </a>
+        {% endif %}
+        {% if filter.has_next %}
+        <a href="?page={{ filter.next_page_number }}"> 
+            <span style="font-size:30px;float:right;padding-right:50px;color: #6D72C3;" class="glyphicon glyphicon-arrow-right">
+                next 
+            </span>
+        </a>
+        {% endif %}
+        </span>
+    </div>
 </div>
+<br>
+<br>
+<br>
 
 
 {% endblock %}
